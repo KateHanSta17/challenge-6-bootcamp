@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kate's Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Assets/css/style.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+</head>
+<body>
+    <header class="container-fluid py-3">
+        <div class="row align-items-center">
+            <div class="col-1 d-flex flex-column align-items-center">
+                <div id="clock" class="clock"></div>
+                <div id="local-time-label" class="local-time-label">local time</div>
+            </div>
+            <div class="col-11">
+                <h1 class="header-h1">Kate's Weather Dashboard</h1>
+                <h2 class="header-h2">Made using <a href="https://openweathermap.org/" target="_blank">OpenWeather</a></h2>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div id="weather-dashboard">
+            <div id="search-section" class="d-flex mb-4">
+                <input type="text" id="city-input" class="form-control mr-2" placeholder="Enter a city">
+                <button id="search-button" class="btn btn-primary">Search</button>
+            </div>
+            <div id="current-weather" class="mb-4">
+                <!-- Current weather information will be displayed here -->
+            </div>
+            <div id="forecast" class="row">
+                <!-- 5-day forecast will be displayed here -->
+            </div>
+        </div>
+    </main>
+    <footer class="text-center py-4">
+        <p>&copy; 2024 Created by: <a class="footer-text" href="https://github.com/KateHanSta17" target="_blank">Kate</a> <span id="footer-styling">for Coding Bootcamp</span></p>
+    </footer>
+    <script src="./Assets/js/script.js"></script>
+</body>
+</html>
