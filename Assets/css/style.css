@@ -15,6 +15,13 @@ body {
     margin: 20px;
 }
 
+#clock {
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
 .local-time-label {
     font-size: 15px;
     font-style: italic;
@@ -31,21 +38,85 @@ body {
     margin: 0;
     font-style: italic;
     text-align: left;
-    font-size: 90%; 
+    font-size: 90%;
 }
 
-#weather-dashboard {
-    background-color: white;
+#search-section {
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: 100%; /* Adjust to fit content */
+    width: 95%;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+#current-weather {
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: 250px; /* Set a fixed height to match the forecast box */
+    width: 95%;
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: transparent; /* No background color initially */
+}
+
+#forecast {
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin-right: 20px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between; /* Make sure forecast items are in one row */
+    gap: 10px; /* Add gap between forecast items */
 }
 
 #forecast .forecast-item {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px;
+    color: rgb(0, 0, 0);
+    padding: 15px; /* Adjust padding */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     text-align: center;
-    margin-bottom: 15px;
+    flex: 1; /* Make all forecast items the same size */
+    min-width: 150px; /* Ensure forecast items don't get too narrow */
+    min-height: 220px; /* Increase min height */
+}
+
+#forecast .forecast-item h3 {
+    font-size: 18px; /* Increase font size */
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#forecast .forecast-item .date {
+    font-size: 16px; /* Increase date size */
+    margin-bottom: 5px;
+}
+
+#forecast .forecast-item .separator {
+    border-top: 1px solid #d3d3d3;
+    margin: 5px 0;
+}
+
+#forecast .forecast-item p {
+    margin: 0;
+    font-size: 14px; /* Adjust font size */
+    line-height: 1.4; /* Adjust line height */
+}
+
+.main-container {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }

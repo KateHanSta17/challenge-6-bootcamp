@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kate's Weather Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./Assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header class="container-fluid py-3">
         <div class="row align-items-center">
             <div class="col-1 d-flex flex-column align-items-center">
@@ -24,21 +24,32 @@
             </div>
         </div>
     </header>
-    <main class="container">
-        <div id="weather-dashboard">
-            <div id="search-section" class="d-flex mb-4">
-                <input type="text" id="city-input" class="form-control mr-2" placeholder="Enter a city">
-                <button id="search-button" class="btn btn-primary">Search</button>
+    <main class="container-fluid flex-grow-1">
+        <div class="row">
+            <div class="col-3">
+                <div id="search-section" class="d-flex flex-column mb-4 border border-light rounded">
+                    <input type="text" id="city-input" class="form-control mb-2" placeholder="Enter a city">
+                    <button id="search-button" class="btn btn-primary mb-4">Search</button>
+                    <div id="suggested-cities">
+                        <button class="btn btn-secondary btn-block mb-2">Sydney, Australia</button>
+                        <button class="btn btn-secondary btn-block mb-2">Atlanta, Georgia</button>
+                        <button class="btn btn-secondary btn-block mb-2">London, UK</button>
+                        <button class="btn btn-secondary btn-block mb-2">Toronto, Canada</button>
+                        <button class="btn btn-secondary btn-block mb-2">Perth, Australia</button>
+                    </div>
+                </div>
             </div>
-            <div id="current-weather" class="mb-4">
-                <!-- Current weather information will be displayed here -->
-            </div>
-            <div id="forecast" class="row">
-                <!-- 5-day forecast will be displayed here -->
+            <div class="col-9">
+                <div id="current-weather" class="mb-4 border border-light rounded">
+                    <!-- Current weather information will be displayed here -->
+                </div>
+                <div id="forecast" class="row border border-light rounded">
+                    <!-- 5-day forecast will be displayed here -->
+                </div>
             </div>
         </div>
     </main>
-    <footer class="text-center py-4">
+    <footer class="text-center py-4 mt-auto">
         <p>&copy; 2024 Created by: <a class="footer-text" href="https://github.com/KateHanSta17" target="_blank">Kate</a> <span id="footer-styling">for Coding Bootcamp</span></p>
     </footer>
     <script src="./Assets/js/script.js"></script>

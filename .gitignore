@@ -1,0 +1,4 @@
+# .gitignore
+
+# Ignore API key file
+api_key.txt
