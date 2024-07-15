@@ -1,16 +1,17 @@
 # 06 Server-Side APIs: Weather Dashboard
 
-## Your Task
+## Project Links
+### GitHub Repo
+[Challenge-6-Bootcamp](https://github.com/KateHanSta17/challenge-6-bootcamp/)
 
-Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+### GitHub Page
+[Deployed Task Weather App](https://katehansta17.github.io/challenge-6-bootcamp/)
 
-Use the [5 Day Weather Forecast](https://openweathermap.org/forecast5) to retrieve weather data for cities. The base URL should look like the following: `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`. After registering for a new API key, you may need to wait up to 2 hours for that API key to activate.
+### GitLab Origin
+[06 Server-Side APIs: Weather Dashboard](https://git.bootcampcontent.com/University-of-Sydney/USYD-VIRT-FSF-PT-05-2024-U-LOLC/-/tree/main/06-Server-Side-APIs/02-Challenge)
 
-**Hint**: Using the 5 Day Weather Forecast API, you'll notice that you will need to pass in coordinates instead of just a city name. Using the OpenWeatherMap APIs, how could we retrieve geographical coordinates given a city name?
-
-You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
-
-## User Story
+## The Task
+### User Story
 
 ```
 AS A traveler
@@ -18,7 +19,7 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 ```
 
-## Acceptance Criteria
+### Acceptance Criteria
 
 ```
 GIVEN a weather dashboard with form inputs
@@ -31,6 +32,48 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
+
+## The Final Product
+
+### Home Screen
+![New Session](./Assets/css/images/Homescreen.jpg)
+#### There will be a recommended city waiting to be clicked OR the user can type and search their own choice.
+
+### Search Function
+![New Session](./Assets/css/images/First%20Search.jpg)
+#### Searched city will display Todays date, weather icon, temp, wind, humidity and conditions in the first container. The second container displays the future 5 day forecast for that same city.
+
+### Saved Search History
+![New Session](./Assets/css/images/Second%20Search.jpg)
+#### Previous searches will remain saved in the column under the search button. These searches can be reopened by clicking on them.
+
+### 12 saves
+![New Session](./Assets/css/images/Up%20to%2012%20cities%20saved.jpg)
+#### Up to 12 cities can be searched and saved in the list. New saves are added to the top. If a person searches for more than 12 cities, the oldest searches will drop off from the bottom of the list.
+
+### Overview of Final Look
+![New Session](./Assets/css/images/Final%20Screen.jpg)
+
+### Error Alert - city not found
+![city not found](./Assets/css/images/Error%20Alert%201.jpg)
+
+### Error Alert - no city entered
+![no city entered](./Assets/css/images/Error%20Alert%202.jpg)
+
+
+
+
+## Your Task
+
+Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+
+Use the [5 Day Weather Forecast](https://openweathermap.org/forecast5) to retrieve weather data for cities. The base URL should look like the following: `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`. After registering for a new API key, you may need to wait up to 2 hours for that API key to activate.
+
+**Hint**: Using the 5 Day Weather Forecast API, you'll notice that you will need to pass in coordinates instead of just a city name. Using the OpenWeatherMap APIs, how could we retrieve geographical coordinates given a city name?
+
+You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
+
+
 
 ## Mock-Up
 
