@@ -1,10 +1,18 @@
+/* Gradient for header background to look like a rising day sky */
+header {
+    background: linear-gradient(to bottom, #d9e1ff, #f8c0d8);
+}
+
+/* Styling for the entire body of the page */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
     background-color: #f0f0f0;
 }
 
+/* Styling for the clock in the header */
 .clock {
-    font-size: 18px;
+    font-size: 20px;
     background-color: #333;
     color: #fff;
     padding: 10px;
@@ -15,6 +23,7 @@ body {
     margin: 20px;
 }
 
+/* Additional styling for the clock element */
 #clock {
     border: 1px solid #d3d3d3;
     border-radius: 4px;
@@ -22,6 +31,7 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* Styling for the local time label below the clock */
 .local-time-label {
     font-size: 15px;
     font-style: italic;
@@ -29,94 +39,147 @@ body {
     margin-top: -20px;
 }
 
+/* Styling for the main header (H1) */
 .header-h1 {
     margin: 0;
     text-align: left;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 630;
 }
 
+/* Styling for the secondary header (H2) */
 .header-h2 {
     margin: 0;
     font-style: italic;
     text-align: left;
     font-size: 90%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 580;
 }
 
+/* Styling for the search section container */
 #search-section {
     border: 1px solid #d3d3d3;
     border-radius: 4px;
     padding: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    height: 100%; /* Adjust to fit content */
+    height: 100%;
     width: 95%;
     margin-left: 20px;
     margin-right: 5px;
 }
 
+/* Styling for the Search Button */
+.btn-primary {
+    background-color: #000000;
+    border-color: #ffffff;
+    color: #ffffff; /* Ensure text color is white */
+    font-weight: bold;
+    font-size: larger;
+}
+
+/* Styling for the Dynamic Search History Buttons */
+.btn-secondary {
+    background-color: #000000; /* Change the background color */
+    border-color: #ffffff; /* Change the border color */
+    color: #ffffff; /* Ensure text color is white */
+    font-weight: bold;
+}
+
+/* Styling for the current weather container */
 #current-weather {
     border: 1px solid #d3d3d3;
-    border-radius: 4px;
-    padding: 20px;
+    border-radius: 6px;
+    padding: 15px; /* Match the padding of forecast items */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    height: 250px; /* Set a fixed height to match the forecast box */
+    height: 375px;
     width: 95%;
     margin-right: 20px;
     margin-left: 20px;
-    background-color: transparent; /* No background color initially */
+    margin-top: 10px; /* Align with the search section */
+    background-color: transparent;
+    font-size: large;
 }
 
+/* Styling for the forecast container */
 #forecast {
     border: 1px solid #d3d3d3;
     border-radius: 4px;
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     width: 95%;
+    height: 350px;
     margin-right: 20px;
     margin-left: 20px;
     display: flex;
-    justify-content: space-between; /* Make sure forecast items are in one row */
-    gap: 10px; /* Add gap between forecast items */
+    justify-content: space-between;
+    gap: 10px;
 }
 
+/* Styling for individual forecast items */
 #forecast .forecast-item {
     color: rgb(0, 0, 0);
-    padding: 15px; /* Adjust padding */
+    padding: 15px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     text-align: center;
-    flex: 1; /* Make all forecast items the same size */
-    min-width: 150px; /* Ensure forecast items don't get too narrow */
-    min-height: 220px; /* Increase min height */
+    flex: 1;
+    min-width: 150px;
+    min-height: 220px;
 }
 
+/* Styling for the forecast item headers */
 #forecast .forecast-item h3 {
-    font-size: 18px; /* Increase font size */
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 5px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 580;
 }
 
+/* Styling for the forecast item dates */
 #forecast .forecast-item .date {
-    font-size: 16px; /* Increase date size */
+    font-size: 22px;
     margin-bottom: 5px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 580;
 }
 
+/* Styling for the separators in forecast items */
 #forecast .forecast-item .separator {
     border-top: 1px solid #d3d3d3;
+    padding: 2px;
     margin: 5px 0;
 }
 
+/* Styling for the paragraphs in forecast items */
 #forecast .forecast-item p {
     margin: 0;
-    font-size: 14px; /* Adjust font size */
-    line-height: 1.4; /* Adjust line height */
+    font-size: 18px;
+    line-height: 1.4;
 }
 
+/* Styling for the main container to allow it to grow */
 .main-container {
     flex-grow: 1;
     padding: 20px;
 }
 
+/* Styling for the footer */
 .footer {
     position: relative;
     bottom: 0;
     width: 100%;
+    background: linear-gradient(to top, #d9e1ff, #f8c0d8); /* Gradient for footer */
+}
+
+/* Apply Quicksand font to all headings */
+h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 630;
+}
+
+h2, h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 580;
 }

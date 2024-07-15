@@ -1,106 +1,102 @@
+// API key for OpenWeatherMap
 const APIkey = "98bbd42b08af4996d79ae480f5983193";
 
-// Search button click event listener to get weather data for the city entered in the input field 
-// and save the city to local storage and render the search history buttons on the page
-document.getElementById('search-button').addEventListener('click', function() { 
+// Event listener for the search button to fetch weather data for the entered city
+document.getElementById('search-button').addEventListener('click', function() {
     const city = document.getElementById('city-input').value;
     if (city) {
-        getWeather(city);
-        saveCity(city);
-        renderSearchHistory();
+        getWeather(city); // Fetch weather data
+        saveCity(city); // Save city to local storage
+        renderSearchHistory(); // Update search history
     } else {
         alert("Please enter a city name");
     }
 });
 
-// Event listener for suggested cities
-document.querySelectorAll('#suggested-cities button').forEach(button => {
-    button.addEventListener('click', function() {
-        const city = this.textContent;
-        getWeather(city);
-    });
-});
-
-function getWeather(city) { 
-    // Fetch current weather data and forecast data for the city entered by the user using the OpenWeatherMap API
+// Function to fetch current weather data and forecast data for the entered city
+function getWeather(city) {
     const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=metric`;
 
     fetch(queryURL)
         .then(response => {
             if (!response.ok) {
-                throw new Error('City not found'); // Throw an error if the city name is invalid or not found in the API response
+                throw new Error('City not found');
             }
             return response.json();
         })
         .then(data => {
-            displayCurrentWeather(data);
-            getForecast(data.coord.lat, data.coord.lon);
+            displayCurrentWeather(data); // Display current weather data
+            getForecast(data.coord.lat, data.coord.lon); // Fetch and display forecast data
         })
-        .catch(error => { 
-            // Error handling for invalid city name or other fetch errors
+        .catch(error => {
             console.error('Error fetching weather data:', error);
             alert('Error fetching weather data: ' + error.message);
         });
 }
 
-function displayCurrentWeather(data) { 
-    // Display the current weather data for the city entered by the user on the page
+// Function to display the current weather data on the page
+function displayCurrentWeather(data) {
     const currentWeatherDiv = document.getElementById('current-weather');
     const tempC = data.main.temp;
     const tempF = (tempC * 9/5) + 32;
+    const iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`; // Icon URL
 
     currentWeatherDiv.innerHTML = `
-        <h2>${data.name} (${dayjs().format('dddd, MMMM D, YYYY')})</h2>
-        <p>Temperature: ${tempC.toFixed(1)} °C / ${tempF.toFixed(1)} °F</p>
+        <h2>${data.name}</h2>    
+        <h3>Today: ${dayjs().format('dddd, MMMM D, YYYY')}</h3>
+        <div class="separator"></div>
+        <img src="${iconURL}" alt="${data.weather[0].description}">
+        <div class="separator"></div>
+        <p>Temp: ${tempC.toFixed(1)} °C / ${tempF.toFixed(1)} °F</p>
         <p>Wind: ${data.wind.speed} m/s</p>
         <p>Humidity: ${data.main.humidity} %</p>
         <p>${data.weather[0].description}</p>
     `;
-    currentWeatherDiv.style.backgroundColor = '#d8b3f2';
+    currentWeatherDiv.style.backgroundColor = '#d8b3f2'; // Set background color only once the data is displayed
 }
 
-function getForecast(lat, lon) { 
-    // Fetch forecast data for the city entered by the user using the OpenWeatherMap API based on the latitude and longitude of the city
+// Function to fetch the forecast data for the entered city based on latitude and longitude
+function getForecast(lat, lon) {
     const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
 
     fetch(forecastURL)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Error fetching forecast data'); // Throw an error if there is an error fetching forecast data from the API response
+                throw new Error('Error fetching forecast data');
             }
             return response.json();
         })
         .then(data => {
-            displayForecast(data);
+            displayForecast(data); // Display forecast data
         })
-        .catch(error => { 
-            // Error handling for invalid city name or other fetch errors for forecast data
+        .catch(error => {
             console.error('Error fetching forecast data:', error);
             alert('Error fetching forecast data: ' + error.message);
         });
 }
 
-function displayForecast(data) { 
-    // data.list is an array of forecast items for every 3 hours for the next 5 days (40 items total)
+// Function to display the 5-day forecast data on the page
+function displayForecast(data) {
     const forecastDiv = document.getElementById('forecast');
     forecastDiv.innerHTML = '';
 
     const colors = ["#C9DDFF", "#ECB0E1", "#DE6C83", "#C1AAC0", "#2CF6B3"];
 
-    for (let i = 0; i < data.list.length; i += 8) { 
-        // Display only 1 forecast per day (every 8th item) for the next 5 days (40 / 8 = 5)
+    for (let i = 0; i < data.list.length; i += 8) {
         const forecast = data.list[i];
         const tempC = forecast.main.temp;
         const tempF = (tempC * 9/5) + 32;
         const day = dayjs(forecast.dt_txt).format('dddd');
         const date = dayjs(forecast.dt_txt).format('MMMM D, YYYY');
+        const iconURL = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`; // Icon URL
 
         forecastDiv.innerHTML += `
             <div class="forecast-item" style="background-color: ${colors[i / 8]}">
                 <h3>${day}</h3>
                 <div class="date">${date}</div>
+                <img src="${iconURL}" alt="${forecast.weather[0].description}">
                 <div class="separator"></div>
-                <p>Temperature: ${tempC.toFixed(1)} °C / ${tempF.toFixed(1)} °F</p>
+                <p>Temp: ${tempC.toFixed(1)} °C / ${tempF.toFixed(1)} °F</p>
                 <p>Wind: ${forecast.wind.speed} m/s</p>
                 <p>Humidity: ${forecast.main.humidity} %</p>
                 <p>${forecast.weather[0].description}</p>
@@ -109,35 +105,41 @@ function displayForecast(data) {
     }
 }
 
+// Function to save the searched city to local storage
 function saveCity(city) {
-    // Save the city name to local storage if it is not already saved in the local storage array of cities
     let cities = JSON.parse(localStorage.getItem('cities')) || [];
     if (!cities.includes(city)) {
-        cities.push(city);
+        cities.unshift(city); // Add new city to the beginning of the array
+        if (cities.length > 12) {
+            cities.pop(); // Remove the oldest city if there are more than 6
+        }
         localStorage.setItem('cities', JSON.stringify(cities));
     }
 }
 
+// Function to render the search history buttons based on cities stored in local storage
 function renderSearchHistory() {
-    // Render the search history buttons on the page based on the cities saved in local storage array of cities
     const searchHistoryDiv = document.getElementById('search-history');
-    if (searchHistoryDiv) {
-        searchHistoryDiv.innerHTML = '';
-        let cities = JSON.parse(localStorage.getItem('cities')) || [];
-        cities.forEach(city => {
-            const button = document.createElement('button');
-            button.classList.add('btn', 'btn-secondary', 'btn-sm', 'mr-2', 'mb-2');
-            button.textContent = city;
-            button.addEventListener('click', () => getWeather(city));
-            searchHistoryDiv.appendChild(button);
-        });
+    searchHistoryDiv.innerHTML = '';
+    let cities = JSON.parse(localStorage.getItem('cities')) || [];
+
+    if (cities.length === 0) {
+        cities.push('Sydney, Australia'); // Default city button if no search history
     }
+
+    cities.forEach(city => {
+        const button = document.createElement('button');
+        button.classList.add('btn', 'btn-secondary', 'btn-block', 'mb-2');
+        button.textContent = city;
+        button.addEventListener('click', () => getWeather(city)); // Fetch weather data when button is clicked
+        searchHistoryDiv.appendChild(button);
+    });
 }
 
-// Render the search history buttons on the page when the page loads or is refreshed based on the cities saved in local storage array of cities
+// Render search history buttons when the page loads
 document.addEventListener('DOMContentLoaded', renderSearchHistory);
 
-// Clock functionality
+// Function to update the clock every second
 function updateClock() {
     const now = dayjs().format('HH:mm:ss');
     document.getElementById('clock').textContent = now;
